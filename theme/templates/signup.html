@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {#    <div class="container mx-auto">#}
+    {#        <section class="flex items-center justify-center h-screen">#}
+    {#            <h1 class="text-5xl">Django + Tailwind = ❤️</h1>#}
+    {#        </section>#}
+    {#    </div>#}
+    <section class='bg-gray-800 text-white p-3 md:px-10 lg:px-20 xl:px-40 2xl:px-72'>Registrazione</section>
+    <section>Hai già un account? Accedi</section>
+    <section>
+        <label>Inserisci la tua mail:</label>
+        <input type="text" placeholder="Mail">
+    </section>
+    <section>
+        <label>Scegli la password:</label>
+        <input type="password" placeholder="Password">
+    </section>
+    <section>
+        <section>
+            <label>Nome attività:</label>
+            <input type="text" placeholder="Cerca su Google Maps">
+        </section>
+        <section>
+            <input type="checkbox" id="google" name="google">
+            <label for="google">La mia attività non è su Google (o non riesco a trovarla al momento)</label>
+        </section>
+    </section>
+    <section>
+        <p>Il link del tuo menu sarà:</p>
+        <p>Il tuo link apparirà qua</p>
+    </section>
+    <section>
+        <p>
+            <spin>Logo del tuo locale</spin>
+            <spin>(puoi anche inserlo più avanti)</spin>
+        </p>
+        <section>
+            <p>Scegli i file che vuoi caricare dal tuo computer o trascinali qua.</p>
+        </section>
+    </section>
+    <section>
+        <input type="checkbox" id="accept" name="accept">
+        <label for="accept">Accetto i Termini e Condizioni</label>
+    </section>
+    <button>Registrati</button>
+{% endblock content %}

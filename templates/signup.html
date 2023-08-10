@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-row">
+    <div class="w-[778px] flex flex-col items-center justify-center pt-[70px] p-[60px] bg-white">
+        <span class='font-sans text-center font-semibold text-[40px] leading-[52px]'>Registrazione</span>
+        <div class="flex flex-row items-center gap-x-[5px]">
+            <span class="text-[#212121] text-[18px] leading-[21px] font-normal">Hai già un account?</span>
+            <span class="text-[#F33F34] text-[18px] leading-[21px] font-normal">Accedi</span>
+        </div>
+        <form action="{% url " signup" %}" method="post">
+            {% csrf_token %}
+            <div class="mt-[30px] flex flex-col gap-y-[20px] w-full">
+
+                <div class="flex flex-col gap-y-[10px]">
+                    <span class="text-[#212121] font-semibold text-[18px]">Inserisci la tua mail:</span>
+                    <input type="text" value="{{ account.mail }}"
+                        class="w-full h-[48px] border border-[#CCCCCC] rounded-[8px] bg-transparent focus:outline-none outline-none px-[15px] text-[#212121] text-[16px]"
+                        placeholder="Mail">
+                </div>
+
+                <div class="flex flex-col gap-y-[10px]">
+                    <span class="text-[#212121] font-semibold text-[18px]">Scegli la password:</span>
+                    <input type="password" value="{{ account.password }}"
+                        class="w-full h-[48px] border border-[#CCCCCC] rounded-[8px] bg-transparent focus:outline-none outline-none px-[15px] text-[#212121] text-[16px]"
+                        placeholder="Password">
+                </div>
+
+                <div class="flex flex-col gap-y-[10px]">
+                    <span class="text-[#212121] font-semibold text-[18px]">Nome attività:</span>
+                    <div class="relative flex flex-row items-center">
+                        <input type="text" id="activityInput" value="{{ account.co_name }}"
+                            class="w-full h-[48px] border border-[#CCCCCC] rounded-[8px] disabled:bg-[#EFEFEF] bg-transparent focus:outline-none outline-none px-[15px] text-[#212121] text-[16px]"
+                            placeholder="Cerca su Google Maps">
+                        <img src="/static/images/google-map.png" alt="google-map" id="googlemapImg"
+                            class="w-[17px] h-[24px] absolute right-[20px]">
+                    </div>
+                </div>
+                <div class="flex flex-row items-center gap-[4px]">
+                    <input id="disableCheckbox" class="rounded-sm" type="checkbox">
+                    <span class="text-[#737373]"> La mia attività non è su Google (o non riesco a trovarla al
+                        momento)</span>
+                </div>
+                <div class="bg-[#FFF5F5] h-[86px] flex flex-col items-center justify-center">
+                    <span class="text-[#212121]">Il link del tuo menu sarà:</span>
+                    <span class="text-[#F33F34]">Il tuo link apparirà qua {{ account.logo_url }}</span>
+                </div>
+                <div class="flex flex-col gap-[10px]">
+                    <div>
+                        <span class="text-[#212121] text-[18px] font-normal leading-[23px]">Logo del tuo locale</span>
+                        <span class="text-[#737373]">(puoi anche inserlo più avanti)</span>
+                    </div>
+                    <div
+                        class="border-[#CCCCCC] border border-dashed h-[160px] flex flex-col items-center justify-center">
+                        <img src="/static/images/default-upload.png" alt="default-upload"
+                            class="w-[80px] h-[80px] p-[10px]">
+                        <span class="text-[#737373] font-normal text-[18px]">Scegli i file che vuoi caricare dal tuo
+                            computer o trascinali qua.</span>
+                    </div>
+                </div>
+                <div class="flex flex-row items-center gap-[4px]">
+                    <input class="rounded-sm" type="checkbox">
+                    <span class="text-[#737373]">Accetto i </span>
+                    <span class="text-[#F33F34]">Termini e Condizioni</span>
+                </div>
+                <button type="submit"
+                    class="bg-[#EFEFEF] w-[115px] h-[57px] p-[10px] text-[#FFFFFF] rounded-[8px]">Registrati</button>
+
+            </div>
+        </form>
+    </div>
+    <div class="flex flex-1 bg-[#FFF5F5] items-center flex-col">
+        <div class="flex flex-col text-center">
+            <span class="font-semibold mt-[73px] text-[#212121] text-[40px]">Tanti ristoratori già usano</span>
+            <span class="text-[#F33F34] text-[40px]">MenuEfficace</span>
+        </div>
+        <div class="mt-[30px]">
+            <img src="/static/images/apple-iphone-13-mini-2021-medium 1.png" alt="apple-iphone-13-mini-2021-medium 1"
+                class="w-[372px] h-[750px]">
+        </div>
+        <div class="mt-[30px] gap-[13px] h-[20px]">
+
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var inputElement = document.getElementById("activityInput");
+        var imgElement = document.getElementById("googlemapImg");
+        var checkboxElement = document.getElementById("disableCheckbox");
+
+        checkboxElement.addEventListener("change", function () {
+            inputElement.disabled = checkboxElement.checked;
+            if (checkboxElement.checked)
+                googlemapImg.classList.add("opacity-20");
+            else
+                googlemapImg.classList.remove("opacity-20");
+        });
+    });
+</script>
+{% endblock content %}
