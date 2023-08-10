@@ -1,0 +1,15 @@
+*.pyc
+*.pyo
+__pycache__
+*.sqlite3
+*.db
+*.log
+*.pyc
+*.swp
+.DS_Store
+*.bak
+*/migrations/*
+*/static/*
+*/media/*
+*.pyc
+*.pyc
