@@ -36,8 +36,8 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-MEDIA_URL = '/public/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '/public/images/')
+MEDIA_URL = '/public/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '/public/')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tailwind',
     'theme',
-    'django_browser_reload'
+    'django_browser_reload',
+    'auth.apps.AuthConfig',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +77,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+
             ],
         },
     },
@@ -113,7 +115,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -134,6 +135,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
