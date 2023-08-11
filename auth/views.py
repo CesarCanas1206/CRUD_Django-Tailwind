@@ -11,7 +11,7 @@ from .forms import RegisterForm, LoginForm, UpdateUserForm, UpdateProfileForm
 class SignupView(View):
     form_class = RegisterForm
     initial = {'key': 'value'}
-    template_name = 'authentication/register.html'
+    template_name = 'user/register.html'
 
     def dispatch(self, request, *args, **kwargs):
         # will redirect to the home page if a user tries to access the register page while logged in
