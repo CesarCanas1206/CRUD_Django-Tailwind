@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="flex flex-row">
+    <div class="w-[778px] flex flex-col items-center justify-center pt-[70px] p-[60px] bg-white">
+        <span class='font-sans text-center font-semibold text-[40px] leading-[52px]'>Sign In</span>
+        <div class="flex flex-row items-center gap-x-[5px]">
+            <span class="text-[#212121] text-[18px] leading-[21px] font-normal">This is created by </span>
+            <span class="text-[#F33F34] text-[18px] leading-[21px] font-normal">Oskar</span>
+        </div>
+        <form method = "POST">
+            {% csrf_token %}
+            <div class="mt-[30px] flex flex-col gap-y-[20px] w-full">
+
+                <div class="flex flex-col gap-y-[10px]">
+                    <span class="text-[#212121] font-semibold text-[18px]">Username</span>
+                    {{ forms.username }}
+                </div>
+
+                <div class="flex flex-col gap-y-[10px]">
+                    <span class="text-[#212121] font-semibold text-[18px]">Mail</span>
+                    {{ forms.email }}
+                </div>
+
+                <div class="flex flex-col gap-y-[10px]">
+                    <span class="text-[#212121] font-semibold text-[18px]">Password</span>
+                    {{ forms.password1 }}
+                </div>
+
+                <div class="flex flex-col gap-y-[10px]">
+                    <span class="text-[#212121] font-semibold text-[18px]">Password</span>
+                    {{ forms.password2 }}
+                </div>
+
+                <button type="submit"
+                    class="bg-[#EFEFEF] w-[115px] h-[57px] p-[10px] text-[#FFFFFF] rounded-[8px]">Register</button>
+
+            </div>
+        </form>
+    </div>
+    <div class="flex flex-1 bg-[#FFF5F5] items-center flex-col">
+        <div class="flex flex-col text-center">
+            <span class="font-semibold mt-[73px] text-[#212121] text-[40px]">Make more beautiful UI</span>
+            <span class="text-[#F33F34] text-[40px]">Menu Effective</span>
+        </div>
+        <div class="mt-[30px]">
+            <img src="/static/images/apple-iphone-13-mini-2021-medium 1.png" alt="apple-iphone-13-mini-2021-medium 1"
+                class="w-[372px] h-[750px]">
+        </div>
+        <div class="mt-[30px] gap-[13px] h-[20px]">
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
