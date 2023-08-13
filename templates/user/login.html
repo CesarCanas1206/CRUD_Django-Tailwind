@@ -4,33 +4,46 @@
 <div class="flex flex-row">
     <div class="w-[778px] flex flex-col items-center justify-center pt-[70px] p-[60px] bg-white">
         <span class='font-sans text-center font-semibold text-[40px] leading-[52px]'>Sign In</span>
-        <div class="flex flex-row items-center gap-x-[5px]">
+        <div class="flex flex-row items-center gap-x-[5px] mt-[20px]">
             <span class="text-[#212121] text-[18px] leading-[21px] font-normal">This is created by </span>
             <span class="text-[#F33F34] text-[18px] leading-[21px] font-normal">Oskar</span>
         </div>
-        <form method = "POST">
-            {% csrf_token %}
-            <div class="mt-[30px] flex flex-col gap-y-[20px] w-full">
+        <div class="mt-[30px] flex flex-col gap-y-[20px] w-full">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="flex flex-col gap-y-[20px]">
+                    <div class="flex flex-col gap-y-[10px]">
+                        <span class="text-[#212121] font-semibold text-[18px]">Mail</span>
+                        {{ form.email }}
+                    </div>
 
-                <div class="flex flex-col gap-y-[10px]">
-                    <span class="text-[#212121] font-semibold text-[18px]">Mail</span>
-                    <input type="text" id="username" name="username"
-                        class="w-full h-[48px] border border-[#CCCCCC] rounded-[8px] bg-transparent focus:outline-none outline-none px-[15px] text-[#212121] text-[16px]"
-                        placeholder="Mail">
+                    <div class="flex flex-col gap-y-[10px]">
+                        <span class="text-[#212121] font-semibold text-[18px]">Password</span>
+                        {{ form.password }}
+                    </div>
+
+                    <div class="flex flex-row gap-x-[20px] items-center">
+                        {{ form.remember_me }}
+                        <label> Remember me</label>
+                    </div>
+
+                    <div class="flex flex-row gap-x-[20px]">
+                        <button type="submit"
+                            class="bg-slate-200 hover:bg-slate-300 w-[115px] h-[57px] p-[10px] text-slate-700 font-bold rounded-[8px] hover:text-[18px] duration-200">Sign
+                            In</button>
+                        <div class="items-center justify-center mt-4 text-[20px] leading-[21px] font-normal">
+                            <span class="text-[#212121]">Don't have an account yet?
+                            </span>
+                            <a href="{% url 'account:signup' %}"
+                                class="text-[#F33F34] underline-offset-1 border-red-400 border-b-2">Sign up</a>
+                        </div>
+                        <div class="items-center justify-center mt-4 text-[16px] leading-[21px] font-normal hover:text-[18px] hover:text-slate-800 duration-150">
+                            <a href="{% url 'account:password_reset' %}"><i>Forgot Password?</i></a>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="flex flex-col gap-y-[10px]">
-                    <span class="text-[#212121] font-semibold text-[18px]">Password</span>
-                    <input type="password" id="password" name="password"
-                        class="w-full h-[48px] border border-[#CCCCCC] rounded-[8px] bg-transparent focus:outline-none outline-none px-[15px] text-[#212121] text-[16px]"
-                        placeholder="Password">
-                </div>
-
-                <button type="submit"
-                    class="bg-[#EFEFEF] w-[115px] h-[57px] p-[10px] text-[#FFFFFF] rounded-[8px]">Login</button>
-
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
     <div class="flex flex-1 bg-[#FFF5F5] items-center flex-col">
         <div class="flex flex-col text-center">

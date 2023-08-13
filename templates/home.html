@@ -2,15 +2,18 @@
 {% block title %} Menu-Home {% endblock title%}
 {% block content %}
 <div class="flex flex-col items-center justify-center bg-slate-100">
-    <span class='font-sans text-center font-semibold text-[40px] mt-10'> Welcome</span>
+    <span class='font-sans text-center font-semibold text-[40px] mt-10'> Welcome, {{user.first_name.title|default:'Guest'}}</span>
     <div class="flex flex-row items-center gap-x-[10px] justify-center">
         <span class="text-[#212121] text-[18px] leading-[21px] font-normal">This is CRUD example site created by</span>
         <a href="http://github.com/oskar0112" target="_blank"
             class="text-[#F33F34] text-[18px] leading-[21px] font-normal border-b-2 border-red-400">Oskar</a>
     </div>
     <div class="flex flex-row items-center gap-40 mt-5 mb-5">
+        {% if user.is_authenticated %}
+        <a class="font-normal text-[20px] border-red-800 hover:border-b-2" href="{% url 'account:signout' %}">Sign Out</a>
+        {% else %}
         <a class="font-normal text-[20px] border-red-800 hover:border-b-2" href="{% url 'account:signin' %}">Sign in</a>
-        <a class="font-normal text-[20px] border-red-800 hover:border-b-2" href="{% url 'account:signup' %}">Sign up</a>
+        {% endif %}
     </div>
 </div>
 

@@ -7,9 +7,9 @@ from .models import Profile
 
 class LoginForm(AuthenticationForm):
 
-    username = forms.CharField(max_length=40, required=True, widget=forms.TextInput(attrs={
-        'placeholder': 'Username',
-        'class': 'w-full h-[48px] border border-[#CCCCCC] rounded-[8px] bg-transparent focus:outline-none outline-none px-[15px] text-[#212121] text-[16px]',
+    email = forms.EmailField(required=True, widget=forms.TextInput(attrs={
+        'placeholder': 'Email',
+        'class': 'w-full h-[48px] border border-[#CCCCCC] rounded-[8px] bg-transparent focus:outline-none px-[15px] text-[#212121] text-[16px]',
     }))
     password = forms.CharField(max_length=50, required=True, widget=forms.PasswordInput(attrs={
         'placeholder': 'Password',
@@ -22,7 +22,7 @@ class LoginForm(AuthenticationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'password', 'remember_me']
+        fields = ['email', 'password', 'remember_me']
 
 
 class RegisterForm(UserCreationForm):
