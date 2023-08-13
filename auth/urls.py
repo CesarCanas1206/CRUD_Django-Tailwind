@@ -9,7 +9,7 @@ app_name = "account"
 urlpatterns = [
     path('register/', SignupView.as_view(), name='signup'),
     path('login/', SigninView.as_view(redirect_authenticated_user=True, template_name='user/login.html', authentication_form=LoginForm), name='signin'),
-    path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name='logout'),
+    path('logout/', auth_views.LogoutView.as_view(template_name='user/logout.html'), name='signout'),
     path('profile/', profile, name='profile'),
     path('password-reset/', ResetPasswordView.as_view(), name='password_reset'),
     path('password-reset-confirm/<uidb64>/<token>/',

@@ -8,6 +8,18 @@
             <span class="text-[#212121] text-[18px] leading-[21px] font-normal">This is created by </span>
             <span class="text-[#F33F34] text-[18px] leading-[21px] font-normal">Oskar</span>
         </div>
+        {% if form.errors %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <div id="form_errors">
+                {% for key, value in form.errors.items %}
+                <strong>{{ value }}</strong>
+                {% endfor %}
+            </div>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
         <div class="mt-[30px] flex flex-col w-full">
             <form method="POST">
                 {% csrf_token %}
