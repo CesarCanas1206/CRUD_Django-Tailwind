@@ -16,7 +16,7 @@ class SignupView(View):
     def dispatch(self, request, *args, **kwargs):
         # will redirect to the home page if a user tries to access the register page while logged in
         if request.user.is_authenticated:
-            return redirect(to='/')
+            return redirect(to='')
 
         # else process dispatch as it otherwise normally would
         return super(SignupView, self).dispatch(request, *args, **kwargs)
@@ -34,7 +34,7 @@ class SignupView(View):
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}')
 
-            return redirect(to='login')
+            return redirect(to='account:signin')
 
         return render(request, self.template_name, {'form': form})
 
