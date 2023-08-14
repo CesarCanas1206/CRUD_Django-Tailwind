@@ -36,9 +36,6 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-MEDIA_URL = '/public/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '/public/')
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -135,6 +132,9 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+MEDIA_URL = '/public/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '/public/')
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 
