@@ -134,7 +134,9 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/public/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '/public/')
+MEDIA_ROOT = os.path.join(BASE_DIR, '/public/images/')
+
+LOGIN_REDIRECT_URL = '/'
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 
