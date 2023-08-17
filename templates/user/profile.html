@@ -1,44 +1,54 @@
 {% extends "base.html" %}
-{% block title %}Profile Page{% endblock title %}
 {% block content %}
-    <div class="row my-3 p-3">
-        <img class="rounded-circle account-img" src="{{ user.profile.avatar.url }} " style="cursor: pointer;"/>
-    </div>
-    {% if user_form.errors %}
-        <div class="alert alert-danger alert-dismissible" role="alert">
-            <div id="form_errors">
-                {% for key, value in user_form.errors.items %}
-                    <strong>{{ value }}</strong>
-                {% endfor %}
-            </div>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+<div class="flex flex-row">
+    <div class="w-[778px] flex flex-col items-center p-[60px] bg-white">
+        <img class="rounded-full" src="{{ user.profile.avatar.url }} " style="cursor: pointer;" />
+        {% if user_form.errors %}
+        <div class="flex flex-col items-center gap-y-[3px] mt-[20px]">
+            {% for key, value in user_form.errors.items %}
+            <span class="text-[#F33F34] text-[18px] leading-[21px] font-normal">{{ key }} {{ value }}</span>
+            {% endfor %}
         </div>
-    {% endif %}
-    <div class="form-content">
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-row">
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label class="small mb-1">Username:</label>
-                            {{ user_form.username }}
-                        <label class="small mb-1">Email:</label>
-                            {{ user_form.email }}
+        {% endif %}
+        <div class="mt-[30px] flex flex-col w-full">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="flex flex-col gap-y-[20px]">
+                    <div class="flex flex-col gap-y-[10px]">
+                        <span class="text-[#212121] font-semibold text-[18px]">Username:</span>
+                        {{ user_form.username }}
                     </div>
-                    <div class="form-group">
-                        <a href="{% url 'password_change' %}">Change Password</a>
-                        <hr>
-                        <label class="small mb-1">Change Avatar:</label>
+
+                    <div class="flex flex-col gap-y-[10px]">
+                        <span class="text-[#212121] font-semibold text-[18px]">Email:</span>
+                        {{ user_form.email }}
+                    </div>
+
+                    <div
+                        class="items-center justify-center mt-4 text-[16px] leading-[21px] font-normal">
+                        <a href="{% url 'account:password_change' %}"><i class="text-red-600 hover:text-[18px] duration-100">Change Password</i></a>
+                    </div>
+
+                    <div class="flex flex-col gap-y-[10px]">
+                        <span class="text-[#212121] font-semibold text-[18px]">Change Avatar:</span>
                         {{ profile_form.avatar }}
                     </div>
-                    <label class="small mb-1">Bio:</label> {{ profile_form.bio }}
+
+                    <div class="flex flex-col gap-y-[10px]">
+                        <span class="text-[#212121] font-semibold text-[18px]">Bio:</span>
+                        {{ profile_form.bio }}
+                    </div>
+
+                    <div class="flex flex-row gap-x-[40px]">
+                        <button type="submit"
+                            class="bg-slate-200 hover:bg-slate-300 w-[115px] h-[57px] p-[10px] text-slate-700 font-bold rounded-[8px] hover:text-[18px] duration-100">Save</button>
+                        <button type="reset"
+                            class="bg-slate-200 hover:bg-slate-300 w-[115px] h-[57px] p-[10px] text-slate-700 font-bold rounded-[8px] hover:text-[18px] duration-100">Reset</button>
+                    </div>
                 </div>
-            </div>
-            <br><br>
-            <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
-            <button type="reset" class="btn btn-dark btn-lg">Reset</button>
-        </form>
+            </form>
+        </div>
     </div>
+    {% include "side.html" %}
+</div>
 {% endblock content %}
