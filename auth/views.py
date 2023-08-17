@@ -40,6 +40,7 @@ class SignupView(View):
 
 
 class SigninView(LoginView):
+    
     form_class = LoginForm
 
     def form_valid(self, form):
