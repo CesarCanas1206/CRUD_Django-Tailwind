@@ -136,7 +136,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/public/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '/public/images/')
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/auth/profile'
 
 SESSION_COOKIE_AGE = 60 * 60 * 24 * 30
 
