@@ -24,9 +24,9 @@
                         {{ user_form.email }}
                     </div>
 
-                    <div
-                        class="items-center justify-center mt-4 text-[16px] leading-[21px] font-normal">
-                        <a href="{% url 'account:password_change' %}"><i class="text-red-600 hover:text-[18px] duration-100">Change Password</i></a>
+                    <div class="items-center justify-center mt-4 text-[16px] leading-[21px] font-normal">
+                        <a href="{% url 'account:password_change' %}"><i
+                                class="text-red-600 hover:text-[18px] duration-100">Change Password</i></a>
                     </div>
 
                     <div class="flex flex-col gap-y-[10px]">
@@ -42,8 +42,12 @@
                     <div class="flex flex-row gap-x-[40px]">
                         <button type="submit"
                             class="bg-slate-200 hover:bg-slate-300 w-[115px] h-[57px] p-[10px] text-slate-700 font-bold rounded-[8px] hover:text-[18px] duration-100">Save</button>
-                        <button type="reset"
-                            class="bg-slate-200 hover:bg-slate-300 w-[115px] h-[57px] p-[10px] text-slate-700 font-bold rounded-[8px] hover:text-[18px] duration-100">Reset</button>
+                        <div class="items-center justify-center mt-4 text-[20px] leading-[21px] font-normal">
+                            <span class="text-[#212121]">Go back to
+                            </span>
+                            <a href="{% url 'home:home' %}"
+                                class="text-[#F33F34] underline-offset-1 border-red-400 border-b-2">Home</a>
+                        </div>
                     </div>
                 </div>
             </form>

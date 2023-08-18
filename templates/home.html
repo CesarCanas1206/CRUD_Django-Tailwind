@@ -2,7 +2,20 @@
 {% block title %} Menu-Home {% endblock title%}
 {% block content %}
 <div class="flex flex-col items-center justify-center bg-slate-100">
-    <span class='font-sans text-center font-semibold text-[40px] mt-10'> Welcome, {{user.first_name.title|default:'Guest'}}</span>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success'%}
+                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+            {% elif message.tags == 'info' %}
+                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+            {% elif message.tags == 'warning' %}
+                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+            {% elif message.tags == 'error' %}
+                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <span class='font-sans text-center font-semibold text-[40px] mt-10'> Welcome, {{user.username.title|default:'Guest'}}</span>
     <div class="flex flex-row items-center gap-x-[10px] justify-center">
         <span class="text-[#212121] text-[18px] leading-[21px] font-normal">This is CRUD example site created by</span>
         <a href="http://github.com/oskar0112" target="_blank"
