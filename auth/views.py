@@ -71,7 +71,7 @@ class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
 class ChangePasswordView(SuccessMessageMixin, PasswordChangeView):
     template_name = 'user/change_password.html'
     success_message = "Successfully Changed Your Password"
-    success_url = reverse_lazy('users-home')
+    success_url = reverse_lazy('home:home')
 
 
 @login_required
