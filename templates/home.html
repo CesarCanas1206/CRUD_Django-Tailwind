@@ -3,27 +3,33 @@
 {% block content %}
 <div class="flex flex-col items-center justify-center bg-slate-100">
     {% if messages %}
-        {% for message in messages %}
-            {% if message.tags == 'success'%}
-                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-            {% elif message.tags == 'info' %}
-                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-            {% elif message.tags == 'warning' %}
-                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-            {% elif message.tags == 'error' %}
-                <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
-            {% endif %}
-        {% endfor %}
+    {% for message in messages %}
+    {% if message.tags == 'success' and user.username %}
+    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }} {{ user.username }}')</script>
+    {% elif message.tags == 'info' %}
+    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+    {% elif message.tags == 'warning' %}
+    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
+    {% elif message.tags == 'error' %}
+    <script type=text/javascript>toastr.{{ message.tags }}('{{ message }}')</script>
     {% endif %}
-    <span class='font-sans text-center font-semibold text-[40px] mt-10'> Welcome, {{user.username.title|default:'Guest'}}</span>
-    <div class="flex flex-row items-center gap-x-[10px] justify-center">
+    {% endfor %}
+    {% endif %}
+    <span class='font-sans text-center font-semibold text-[40px] mt-10'> Welcome,
+        {{user.username|default:'Guest'}}</span>
+    <div class="flex flex-row items-center gap-x-[10px] justify-center mt-4">
         <span class="text-[#212121] text-[18px] leading-[21px] font-normal">This is CRUD example site created by</span>
         <a href="http://github.com/oskar0112" target="_blank"
             class="text-[#F33F34] text-[18px] leading-[21px] font-normal border-b-2 border-red-400">Oskar</a>
     </div>
     <div class="flex flex-row items-center gap-40 mt-5 mb-5">
         {% if user.is_authenticated %}
-        <a class="font-normal text-[20px] border-red-800 hover:border-b-2" href="{% url 'account:signout' %}">Sign Out</a>
+        <a class="font-normal text-[20px] border-red-800 hover:border-b-2" href="{% url 'account:signout' %}">Sign
+            Out</a>
+        <span class="text-[#212121] text-[18px] leading-[21px] font-normal">Go to my
+            <a class="font-normal text-[20px] text-red-600 hover:border-b-2"
+                href="{% url 'account:profile' %}"><i>Profile</i></a>
+        </span>
         {% else %}
         <a class="font-normal text-[20px] border-red-800 hover:border-b-2" href="{% url 'account:signin' %}">Sign in</a>
         {% endif %}
